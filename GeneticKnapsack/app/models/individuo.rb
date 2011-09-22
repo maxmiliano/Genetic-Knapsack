@@ -44,12 +44,10 @@ class Individuo
 
       # Encontra o índice do bit que representa o item atual (0 = deixa o item; 1 = leva o item)
       bit_correspondente_ao_item = @genoma[@problema.items.find_index(item)].to_i
-
       # Adiciona o peso (custo) do item em cada compartimento da mochila
       0.upto @problema.quantidade_de_compartimentos - 1 do |compartimento|
         mem[:pesos][compartimento] += item.pesos_em_compartimentos[compartimento].to_i
       end
-
       # Se os pesos do item não ultrapassam os pesos máximos de cada compartimento
       cabe_na_mochila = true # a princípio, cabe
       0.upto mem[:pesos].length - 1 do |i|
@@ -61,9 +59,6 @@ class Individuo
       if cabe_na_mochila
         # adicionamos o valor do item ao fitness (observação: valor * 0 = 0)
         mem[:valor] += item.valor * bit_correspondente_ao_item
-      else
-        # Caso contrário, esse indivíduo possui um solução inválida. Vamos penalizá-lo tirando 5% do seu fitness
-        mem[:valor] = (mem[:valor] * 0.95).to_i
       end
 
       mem

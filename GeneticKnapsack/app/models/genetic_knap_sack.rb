@@ -3,12 +3,12 @@ class GeneticKnapSack
 
   def initialize(problema, opts = {})
     @opts = {
-      :tamanho_da_populacao => 100,
+      :tamanho_da_populacao => 1000,
       :probabilidade_de_recombinacao => 0.7,
       :probabilidade_de_mutacao => 2 / problema.items.size,
       :quantidade_maxima_de_geracoes => 100,
       :verbose => true,
-      :quantidade_maxima_de_geracoes_sem_melhoria => 10,
+      :quantidade_maxima_de_geracoes_sem_melhoria => 15,
       :usar_cruzamento_em_dois_pontos => false
     }.merge! opts
 
